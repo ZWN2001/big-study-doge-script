@@ -1,7 +1,51 @@
 import requests
+import re
+
+openid = 'ohz9Mt4kRNhhKTck6wxioQAbqiYY'
 
 
-# https://github.com/captain686/Youth-Learning
+def getHistory(current_version):
+    url = "http://qndxx.youth54.cn/SmartLA/dxx.w?method=queryPersonStudyRecord"
+    headers = {
+        "Origin": "http://qndxx.youth54.cn",
+        "Cookie": "JSESSIONID=277C3E9C8D096A7A5025C8395A58A25D",
+        "Accept": "*/*",
+        "X-Requested-With": "XMLHttpRequest",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; ELS-AN00 Build/HUAWEIELS-AN00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/4365 MMWEBSDK/20221012 Mobile Safari/537.36 MMWEBID/6920 MicroMessenger/8.0.30.2260(0x28001E55) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64",
+        "Connection": "keep-alive",
+        "Referer": "http://qndxx.youth54.cn/SmartLA/dxx.w?method=enterIndexPage&fxopenid=&fxversion=",
+        "Host": "qndxx.youth54.cn",
+        "Accept-Encoding": "gzip, deflate",
+        "Accept-Language": "zh-CN,zh;q=0.9,en-CN;q=0.8,en-US;q=0.7,en;q=0.6",
+        "Content-Length": "35",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+    }
+    data = f"openid={openid}"
+    response = requests.post(url, data=data, headers=headers, verify=False, timeout=5)
+
+    done = False
+    if response.status_code == 200:
+        # 解析数据
+        obj = re.compile(r"{\"tzzmc\":\".*?\",\"xm\":\".*?\",\"dtsj\":\".*?\",\"sjhm\":\".*?\","
+                         r"\"parent_version\":(?P<parentVersion>\d+),\"version\":\"(?P<version>.*?)\","
+                         r"\"versionname\":\"(?P<versionName>.*?)\",\"fulltzzmc\":\".*?\"}", re.S)
+        result = obj.finditer(response.text)
+
+        print("dxx History:")
+        for it in result:
+            print("-----------------------------")
+            print("     parentVersion:" + it.group("parentVersion"))
+            print("     version:" + it.group("version"))
+            print("     versionName:" + it.group("versionName"))
+            print("-----------------------------")
+            if it.group("version") == current_version:
+                done = True
+
+    else:
+        print("error")
+
+    return done
+
 
 def getNewestVersionInfo():
     url = "http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=getNewestVersionInfo"
@@ -22,7 +66,7 @@ def getNewestVersionInfo():
     }
     try:
         response = requests.get(url, headers=headers, verify=False, timeout=5)
-        print(f"getNewestVersionInfo Status {response.status_code}")
+        # print(f"getNewestVersionInfo Status {response.status_code}")
         if response.status_code == 200:
             version = response.json()
             return version["version"]
@@ -54,23 +98,21 @@ def passInfo():
     }
 
     info = getNewestVersionInfo()
+    done = getHistory(info)
 
-    if info:
+    if not done:
         version = info
         # TODO:抓包，"http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=getNewestVersionInfo"等url内都可以找到openID字段
-        openid = 'your openID'
         data = f"openid={openid}&version={version}"
         try:
             response = requests.post(url, data=data, headers=headers, verify=False, timeout=5)
-
-            print(response.status_code, response.json())
-
             if response.status_code == 200 and response.json()["errcode"] == "0":
                 print("[*] Success ")
         except:
+            print("error")
             pass
     else:
-        print("[!] Error !!!")
+        print("you have done this")
 
 
 if __name__ == "__main__":
