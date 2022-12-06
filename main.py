@@ -2,6 +2,7 @@ import requests
 import re
 
 openid = 'ohz9Mt4kRNhhKTck6wxioQAbqiYY'
+printHistory = False
 
 
 def getHistory(current_version):
@@ -33,11 +34,12 @@ def getHistory(current_version):
 
         print("dxx History:")
         for it in result:
-            print("-----------------------------")
-            print("     parentVersion:" + it.group("parentVersion"))
-            print("     version:" + it.group("version"))
-            print("     versionName:" + it.group("versionName"))
-            print("-----------------------------")
+            if printHistory:
+                print("-----------------------------")
+                print("     parentVersion:" + it.group("parentVersion"))
+                print("     version:" + it.group("version"))
+                print("     versionName:" + it.group("versionName"))
+                print("-----------------------------")
             if it.group("version") == current_version:
                 done = True
 
