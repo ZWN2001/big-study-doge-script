@@ -51,7 +51,7 @@ printHistory = False
 
 HttpCanary放在仓库里，抓包样例如图，很简单。
 
-<img src="./assert/1.jpg" width="400px" />
+<img src="./assert/1.jpg" width="250px" />
 
 openId拿到后扔到代码里直接run就好。
 
