@@ -30,7 +30,7 @@
 
 HttpCanary放在仓库里，抓包样例如图，很简单。
 
-<img src="./assert/1.jpg" style="zoom:25%;" />
+<img src="./assert/1.jpg" style="zoom:15%;" />
 
 openId拿到后扔到代码里直接run就好。
 
