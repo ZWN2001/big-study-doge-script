@@ -1,7 +1,7 @@
 import requests
 import re
 
-openid = 'ohz9Mt4kRNhhKTck6wxioQAbqiYY'
+openid = '----'
 printHistory = False
 
 

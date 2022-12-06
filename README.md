@@ -2,6 +2,8 @@
 
 不知道怎么起英文名，也难怪url里全是dxx（摊手）
 
+### 代码&流程
+
 做大学习的代码参考自https://github.com/captain686/Youth-Learning
 
 其实就是直接揪出了关键代码。
@@ -9,6 +11,23 @@
 查询大学习情况的代码自己写的，使用的是正则表达式
 
 流程就是先获取当前大学习是哪一期，如果没完成就发请求完成，完成了就直接跳过
+
+&nbsp;
+
+### 控制字段
+
+目前代码控制字段都在代码头部给出，解释如下：
+
+```py
+#你的微信OpenID，相当于身份证明
+openid = '----'
+#是否打印大学习的学习记录，默认关闭
+printHistory = False
+```
+
+&nbsp;
+
+### OpenID
 
 由于微信公众号使用openid验证身份，而且是不会过期的，所以需要抓包去找openID。
 
@@ -32,7 +51,7 @@
 
 HttpCanary放在仓库里，抓包样例如图，很简单。
 
-<img src="./assert/1.jpg" style="zoom:15%;" />
+<img src="./assert/1.jpg" width="400px" />
 
 openId拿到后扔到代码里直接run就好。
 
