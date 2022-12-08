@@ -2,6 +2,8 @@
 
 不知道怎么起英文名，也难怪url里全是dxx（摊手）
 
+> 仅作学习用途
+
 ### 代码&流程
 
 做大学习的代码参考自https://github.com/captain686/Youth-Learning
