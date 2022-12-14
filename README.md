@@ -2,6 +2,8 @@
 
 不知道怎么起英文名，也难怪url里全是dxx（摊手）
 
+> 仅作学习用途
+
 ### 代码&流程
 
 做大学习的代码参考自https://github.com/captain686/Youth-Learning
@@ -51,7 +53,7 @@ printHistory = False
 
 HttpCanary放在仓库里，抓包样例如图，很简单。
 
-<img src="./assert/1.jpg" width="400px" />
+<img src="./assert/1.jpg" width="250px" />
 
 openId拿到后扔到代码里直接run就好。
 
