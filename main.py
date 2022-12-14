@@ -32,7 +32,8 @@ def getHistory(current_version):
                          r"\"versionname\":\"(?P<versionName>.*?)\",\"fulltzzmc\":\".*?\"}", re.S)
         result = obj.finditer(response.text)
 
-        print("dxx History:")
+        if printHistory:
+            print("dxx History:")
         for it in result:
             if printHistory:
                 print("-----------------------------")
