@@ -3,6 +3,7 @@ import re
 
 openid = '----'
 printHistory = False
+proxies = {"https": 'https://127.0.0.1:7890'}
 
 
 def getHistory(current_version):
@@ -22,7 +23,7 @@ def getHistory(current_version):
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     }
     data = f"openid={openid}"
-    response = requests.post(url, data=data, headers=headers, verify=False, timeout=5)
+    response = requests.post(url, data=data, headers=headers, verify=False, timeout=5, proxies=proxies)
 
     done = False
     if response.status_code == 200:
@@ -68,7 +69,7 @@ def getNewestVersionInfo():
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     }
     try:
-        response = requests.get(url, headers=headers, verify=False, timeout=5)
+        response = requests.get(url, headers=headers, verify=False, timeout=5, proxies=proxies)
         # print(f"getNewestVersionInfo Status {response.status_code}")
         if response.status_code == 200:
             version = response.json()
@@ -108,7 +109,7 @@ def passInfo():
         # TODO:抓包，"http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=getNewestVersionInfo"等url内都可以找到openID字段
         data = f"openid={openid}&version={version}"
         try:
-            response = requests.post(url, data=data, headers=headers, verify=False, timeout=5)
+            response = requests.post(url, data=data, headers=headers, verify=False, timeout=5, proxies=proxies)
             if response.status_code == 200 and response.json()["errcode"] == "0":
                 print("[*] Success ")
         except:

@@ -25,6 +25,8 @@
 openid = '----'
 #是否打印大学习的学习记录，默认关闭
 printHistory = False
+#代理，这样请求时就不需要把自己的代理关掉，鉴于PyCharm有时候确实对代理比较敏感
+proxies = {"https": 'https://127.0.0.1:7890'}
 ```
 
 &nbsp;
