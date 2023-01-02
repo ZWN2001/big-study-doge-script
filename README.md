@@ -57,6 +57,10 @@ HttpCanary放在仓库里，抓包样例如图，很简单。
 
 <img src="./assert/1.jpg" width="250px" />
 
+当然也可以选用win比如wireshark，不过门槛要稍微高一点，但是原理是一样的，样例如下
+
+<img src="./assert/2.png" width="5000px" />
+
 openId拿到后扔到代码里直接run就好。
 
 或者你也可以直接用postman。
