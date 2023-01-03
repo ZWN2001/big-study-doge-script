@@ -4,6 +4,38 @@
 
 > 仅作学习用途
 
+### 使用教程
+
+#### 如果那你是程序员
+
+建议使用git，这样更新起来方便一些：
+
+```sh
+git clone https://github.com/ZWN2001/big-study-doge-script.git
+```
+
+更新的时候直接`git pull`就行
+
+使用你的IDE打开`main.py`，配置好字段后运行即可。
+
+**openid的获取在后文讲**。
+
+#### 如果你没有安装git
+
+对于其他专业的同学来说，git并不是什么生产力工具，我的建议是直接点击绿色按钮code，下载zip之后，使用你的IDE打开`main.py`，配置好字段后运行即可。
+
+更新的时候在github中打开`main.py`复制下来替换到你本地的代码即可。
+
+当然，为了不错过更新，你可以点个star，这样你就能在自己star的历史中找到（doge
+
+不过真的有人不装git却使用github吗（挠头）
+
+什么？你说你没装py环境？那可真没救了。不过以后有时间或许可以打包成一个exe发release，这样win环境下的同学使用起来确实就可以免除安装py环境的麻烦（不会吧不会吧，不会有人电脑上连py环境都没有吧）
+
+别问我问什么不发布Mac版，除非你愿意赞助我一台Mac先（手动狗头
+
+&nbsp;
+
 ### 代码&流程
 
 做大学习的代码参考自https://github.com/captain686/Youth-Learning
