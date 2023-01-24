@@ -1,9 +1,35 @@
 import requests
 import re
+import json
+import os
 
-openids = ['ohz9Mt4kRNhhKTck6wxioQAbqiYY']
-printHistory = True
-proxies = {"https": 'https://127.0.0.1:7890'}
+openids = ['']
+printHistory = False
+proxies = {}
+
+
+def readConfig():
+    global openids, printHistory, proxies
+    try:
+        with open('config.json', 'r') as config_file:
+            config_data = json.load(config_file)
+            openids = config_data["openids"]
+            printHistory = config_data["printHistory"]
+            proxies = config_data["proxies"]
+
+        if len(openids) == 0:
+            return -1
+        if str(printHistory).lower() == "true" or str(printHistory).lower() == "t" \
+                or str(printHistory).lower() == "false" or str(printHistory).lower() == "f":
+            pass
+        else:
+            print("printHistory配置错误")
+            return -1
+        # pyinstaller --console --onefile main.py
+
+    except:
+        print("未找到配置文件")
+        return -1
 
 
 def getHistory(current_version, openid):
@@ -28,7 +54,8 @@ def getHistory(current_version, openid):
     data = f"openid={openid}"
     response = requests.post(url, data=data, headers=headers, verify=False, timeout=5, proxies=proxies)
 
-    done = False
+    # [done] -1 : 未完成, 0 : 已完成, -2 : 出错
+    done = -1
     if response.status_code == 200:
         # 解析数据
         obj = re.compile(r"{\"tzzmc\":\".*?\",\"xm\":\".*?\",\"dtsj\":\".*?\",\"sjhm\":\".*?\","
@@ -47,11 +74,13 @@ def getHistory(current_version, openid):
                     print("     versionName:" + it.group("versionName"))
                     print("-----------------------------")
                 if it.group("version") == current_version:
-                    done = True
+                    done = 0
         else:
             print(f'无大学习完成记录，请检查openid：{openid} 是否正确')
+            done = -2
     else:
         print("网络请求失败")
+        done = -2
 
     return done
 
@@ -113,7 +142,7 @@ def passInfo():
     for openid in openidsWithoutRepate:
         done = getHistory(info, openid)
 
-        if not done:
+        if done == -1:
             version = info
             # TODO:抓包，"http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=getNewestVersionInfo"等url内都可以找到openID字段
             data = f"openid={openid}&version={version}"
@@ -124,9 +153,11 @@ def passInfo():
             except:
                 print(f"{openid}:请求失败")
                 pass
-        else:
+        elif done == 0:
             print(f"openid：{openid} 已经完成了本期大学习")
 
 
 if __name__ == "__main__":
+    readConfig()
     passInfo()
+    os.system('pause')
