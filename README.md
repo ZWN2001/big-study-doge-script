@@ -4,7 +4,30 @@
 
 > 仅作学习用途
 
+### 控制字段
+
+目前代码控制字段都在配置文件`config.json`中给出，解释如下：
+
+```json
+{
+  #微信OpenID，相当于身份证明，可以添加多个
+  "openids" : ["---"],
+  #是否打印大学习的学习记录，默认关闭，仅接受f,false,False,t,true,True
+  "printHistory" : "False",
+  #代理，这样请求时就不需要把自己的代理关掉
+  "proxies" : {"https": "https://127.0.0.1:7890"}
+}
+```
+
+&nbsp;
+
 ### 使用教程
+
+#### 使用Release（最简单）
+
+直接下载release即可，在`config.json`内配置完相关参数后点击exe运行即可，当然，如果你没有VSCODE等IDE，直接用记事本打开编辑即可，记得保存就行。
+
+
 
 #### 如果那你是程序员
 
@@ -19,6 +42,8 @@ git clone https://github.com/ZWN2001/big-study-doge-script.git
 使用你的IDE打开`main.py`，配置好字段后运行即可。
 
 **openid的获取在后文讲**。
+
+
 
 #### 如果你没有安装git
 
@@ -48,21 +73,6 @@ git clone https://github.com/ZWN2001/big-study-doge-script.git
 
 &nbsp;
 
-### 控制字段
-
-目前代码控制字段都在代码头部给出，解释如下：
-
-```py
-#微信OpenID，相当于身份证明，可以添加多个
-openids = ['----','----']
-#是否打印大学习的学习记录，默认关闭
-printHistory = False
-#代理，这样请求时就不需要把自己的代理关掉，鉴于PyCharm有时候确实对代理比较敏感
-proxies = {"https": 'https://127.0.0.1:7890'}
-```
-
-&nbsp;
-
 ### OpenID
 
 由于微信公众号使用openid验证身份，而且是不会过期的，所以需要抓包去找openID。
@@ -87,11 +97,11 @@ proxies = {"https": 'https://127.0.0.1:7890'}
 
 HttpCanary放在仓库里，抓包样例如图，很简单。
 
-<img src="./assert/1.jpg" width="250px" />
+<img src="./assets/1.jpg" width="250px" />
 
 当然也可以选用win比如wireshark，不过门槛要稍微高一点，但是原理是一样的，样例如下
 
-<img src="./assert/2.png" width="800px" />
+<img src="./assets/2.png" width="800px" />
 
 openId拿到后扔到代码里直接run就好。
 
@@ -110,3 +120,13 @@ A：被ban了
 Q：我有自己的服务器，用服务器跑可不可以？
 
 A：我觉得没啥问题，但是服务器一般在省外，不知道会不会有限制或者被ban。
+
+（当然，我觉得非要整一台服务器专门做大学习有点大材小用）
+
+&nbsp;
+
+### Buy Me coffee
+
+如果你觉得有用。。。。当然这一切都很简单，只不过是我用学了半天不到的Python写的，如果有人愿意支持，我会持续更的（躺）。
+
+<img src="./assets/coffee.jpg" width="500px" />

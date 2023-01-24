@@ -1,5 +1,5 @@
 {
   "openids" : ["---"],
-  "printHistory" : "True",
+  "printHistory" : "False",
   "proxies" : {"https": "https://127.0.0.1:7890"}
 }
