@@ -97,6 +97,8 @@ openId拿到后扔到代码里直接run就好。
 
 或者你也可以直接用postman。
 
+>##PS.这个openID是不会变的，所以抓包抓一次就ok了！##
+
 &nbsp;
 
 ### Q&A
