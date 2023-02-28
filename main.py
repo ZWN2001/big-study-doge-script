@@ -76,8 +76,8 @@ def getHistory(current_version, openid):
                 if it.group("version") == current_version:
                     done = 0
         else:
-            print(f'无大学习完成记录，请检查openid：{openid} 是否正确')
-            done = -2
+            print(f'无大学习完成记录，请检查openid：{openid} 是否正确（学期开始请忽略）')
+            done = 0
     else:
         print("网络请求失败")
         done = -2
