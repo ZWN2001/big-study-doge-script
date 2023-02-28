@@ -59,6 +59,14 @@ git clone https://github.com/ZWN2001/big-study-doge-script.git
 
 别问我问什么不发布Mac版，除非你愿意赞助我一台Mac先（手动狗头
 
+
+
+#### 打包
+
+可以参考https://zhuanlan.zhihu.com/p/162237978
+
+使用`pyinstaller -F main.py`
+
 &nbsp;
 
 ### 代码&流程
