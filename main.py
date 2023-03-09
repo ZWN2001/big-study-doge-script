@@ -64,7 +64,6 @@ def getHistory(current_version, openid):
         # result = obj.finditer(response.text)
 
         json_result = response.json()
-        print(json_result)
         if json_result['xm'] != "":
             if printHistory:
                 print("dxx History:")
