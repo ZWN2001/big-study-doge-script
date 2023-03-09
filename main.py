@@ -1,5 +1,4 @@
 import requests
-import re
 import json
 import os
 
@@ -33,7 +32,8 @@ def readConfig():
 
 
 def getHistory(current_version, openid):
-    url = "http://qndxx.youth54.cn/SmartLA/dxx.w?method=queryPersonStudyRecord"
+    # url = "http://qndxx.youth54.cn/SmartLA/dxx.w?method=queryPersonStudyRecord"
+    url = "http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=queryPersonStudyRecord"
     headers = {
         "Origin": "http://qndxx.youth54.cn",
         "Cookie": "JSESSIONID=277C3E9C8D096A7A5025C8395A58A25D",
@@ -58,30 +58,30 @@ def getHistory(current_version, openid):
     done = -1
     if response.status_code == 200:
         # 解析数据
-        obj = re.compile(r"{\"tzzmc\":\".*?\",\"xm\":\".*?\",\"dtsj\":\".*?\",\"sjhm\":\".*?\","
-                         r"\"parent_version\":(?P<parentVersion>\d+),\"version\":\"(?P<version>.*?)\","
-                         r"\"versionname\":\"(?P<versionName>.*?)\",\"fulltzzmc\":\".*?\"}", re.S)
-        result = obj.finditer(response.text)
+        # obj = re.compile(r"{\"tzzmc\":\".*?\",\"xm\":\".*?\",\"dtsj\":\".*?\",\"sjhm\":\".*?\","
+        #                  r"\"parent_version\":(?P<parentVersion>\d+),\"version\":\"(?P<version>.*?)\","
+        #                  r"\"versionname\":\"(?P<versionName>.*?)\",\"fulltzzmc\":\".*?\"}", re.S)
+        # result = obj.finditer(response.text)
 
-        if sum(1 for _ in result) > 0:
+        json_result = response.json()
+        print(json_result)
+        if json_result['xm'] != "":
             if printHistory:
                 print("dxx History:")
-            for it in result:
+                print(json_result['xm'])
+            for it in json_result["vds"]:
                 if printHistory:
                     print("-----------------------------")
-                    print("     parentVersion:" + it.group("parentVersion"))
-                    print("     version:" + it.group("version"))
-                    print("     versionName:" + it.group("versionName"))
+                    print("     parentVersion:" + str(it["parent_version"]))
+                    print("     version:" + it["version"])
+                    print("     versionName:" + it["versionname"])
                     print("-----------------------------")
-                if it.group("version") == current_version:
+                if it["version"] == current_version:
                     done = 0
-        else:
-            print(f'无大学习完成记录，请检查openid：{openid} 是否正确（学期开始请忽略）')
-            done = 0
+
     else:
         print("网络请求失败")
         done = -2
-
     return done
 
 
