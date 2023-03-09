@@ -1,4 +1,4 @@
-## big-stydy-doge
+## big-study-doge
 
 不知道怎么起英文名，也难怪url里全是dxx（摊手）
 
