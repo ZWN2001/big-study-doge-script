@@ -157,6 +157,8 @@ def passInfo():
 
 
 if __name__ == "__main__":
+    print("仓库地址：https://github.com/ZWN2001/big-study-doge-script")
+    print('-------------------------------------------------')
     readConfig()
     passInfo()
     os.system('pause')
