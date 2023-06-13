@@ -36,7 +36,6 @@ def getHistory(current_version, openid):
     url = "http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=queryPersonStudyRecord"
     headers = {
         "Origin": "http://qndxx.youth54.cn",
-        "Cookie": "JSESSIONID=277C3E9C8D096A7A5025C8395A58A25D",
         "Accept": "*/*",
         "X-Requested-With": "XMLHttpRequest",
         "User-Agent": "Mozilla/5.0 (Linux; Android 12; ELS-AN00 Build/HUAWEIELS-AN00; wv) AppleWebKit/537.36 (KHTML, "
@@ -89,7 +88,6 @@ def getNewestVersionInfo():
 
     headers = {
         "Origin": "http://qndxx.youth54.cn",
-        "Cookie": "JSESSIONID=A0B36BB8AC5782093C96170306EECFD4",
         "Accept": "*/*",
         "X-Requested-With": "XMLHttpRequest",
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, "
@@ -115,7 +113,6 @@ def getNewestVersionInfo():
 def passInfo():
     url = "http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=studyLatest"
     headers = {
-        "Cookie": "JSESSIONID=551858919D81B6E40C56261D4F7ABA2E",
         "Origin": "http://qndxx.youth54.cn",
         "Accept": "*/*",
         "X-Requested-With": "XMLHttpRequest",
