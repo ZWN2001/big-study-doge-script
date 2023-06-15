@@ -22,10 +22,10 @@
 &nbsp;
 
 ### 使用教程
-2023.6 [davis4better
+2023.6更新 [davis4better
 ](https://github.com/davis4better)打包发布了Mac版，[传送门](https://github.com/davis4better/studyformac).
 
-Linux仍需要自己打包
+Linux受限于架构，可能仍需要自己打包
 
 #### 使用Release（最简单）
 
